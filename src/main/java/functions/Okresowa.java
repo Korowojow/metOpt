@@ -35,7 +35,6 @@ public class Okresowa {
         return Math.sin(x) * Math.sin(x) - 0.1*(Math.exp(-x*x));
     }
     private Double updateSumInTWoDimensions(Double x) {
-        CommonOperations commonOperations = new CommonOperations();
         return Math.sin(x) * Math.sin(x) - 0.1*(Math.exp(-x*x+x*x));
     }
 }
