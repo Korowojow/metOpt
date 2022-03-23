@@ -17,5 +17,9 @@ public class MetOpt {
         styblinskiTang.implementation(xForStyblinskiTang);
         Okresowa okresowa = new Okresowa();
         okresowa.implementation(xForOkresowa);
+
+        // Value in specific point in any dimension can be calculated with following functions
+        // okresowa.calculateValueInSpecificPoint(List<Double> listOfXValuesInSpecificPoint, int dimensions);
+        // styblinskiTang.calculateValueInSpecificPoint(List<Double> listOfXValuesInSpecificPoint, int dimensions);
         }
 }
