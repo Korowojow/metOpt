@@ -10,6 +10,7 @@ import java.util.List;
 public class Okresowa {
 
     Double result = 0D;
+    Double sum = 0D;
 
     public void implementation(List<Double> x) throws IOException, PythonExecutionException {
         DrawPlotForOkresowa drawPlotForOkresowa = new DrawPlotForOkresowa();
@@ -21,7 +22,7 @@ public class Okresowa {
     public Double calculateValueInSpecificPoint(List<Double> x, int dimensions) throws Exception {
         if(x.size()==dimensions){
             x.forEach(x1->{
-                result += (updateSumInAnyDimensions(x1, dimensions));
+                result += (updateSumInAnyDimensions(x1, x));
             });
             return result + 1;
         }
@@ -47,11 +48,20 @@ public class Okresowa {
     private Double updateSum(Double x) {
         return Math.sin(x) * Math.sin(x) - 0.1*(Math.exp(-x*x));
     }
+
     private Double updateSumInTWoDimensions(Double x) {
         return Math.sin(x) * Math.sin(x) - 0.1*(Math.exp(-x*x+x*x));
     }
-    private Double updateSumInAnyDimensions(Double x, int dimensions) {
-        return Math.sin(x) * Math.sin(x) - 0.1*(Math.exp(-dimensions*(x*x)));
+
+    private Double updateSumInAnyDimensions(Double x, List<Double> doubles) {
+        return Math.sin(x) * Math.sin(x) - 0.1*(Math.exp(-calculateSumOfXSquare(doubles)));
+    }
+
+    private Double calculateSumOfXSquare(List<Double> doubles){
+        doubles.forEach(x1 ->{
+            sum += x1*x1;
+        });
+        return sum;
     }
 }
 
