@@ -11,10 +11,11 @@ import java.util.List;
 
 public class MetOpt {
     public static void main(String[] args) throws IOException, PythonExecutionException {
-        List<Double> x = NumpyUtils.arange(-5, 5, 0.15);
+        List<Double> xForStyblinskiTang = NumpyUtils.arange(-5, 5, 0.15);
+        List<Double> xForOkresowa = NumpyUtils.arange(-10, 10, 0.4);
             StyblinskiTang styblinskiTang = new StyblinskiTang();
-        styblinskiTang.implementation(x);
-//        Okresowa okresowa = new Okresowa();
-//        okresowa.implementation(x);
+        styblinskiTang.implementation(xForStyblinskiTang);
+        Okresowa okresowa = new Okresowa();
+        okresowa.implementation(xForOkresowa);
         }
 }

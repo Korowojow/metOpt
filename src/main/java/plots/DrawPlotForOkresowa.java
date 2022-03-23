@@ -13,10 +13,10 @@ import java.util.List;
 
 public class DrawPlotForOkresowa {
 
-    public void drawPlots(List<Double> x, List<Double> y) throws IOException, PythonExecutionException {
+    public void drawPlots(List<Double> x, List<Double> y, List<Double> yInTwoDimensions) throws IOException, PythonExecutionException {
         drawScatterPlot(x, y);
-        drawContourPlot(x, y);
-        drawSurfacePlot(x, y);
+        drawContourPlot(x, yInTwoDimensions);
+        drawSurfacePlot(x, yInTwoDimensions);
     }
 
     private void drawScatterPlot(List<Double> x, List<Double> y) throws IOException, PythonExecutionException {
