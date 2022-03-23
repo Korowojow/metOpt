@@ -40,7 +40,7 @@ public class Okresowa {
     private List<Double> getResultY(List<Double> x) {
         List<Double> result = new ArrayList<>();
         x.forEach(x1 -> {
-            result.add(updateSum(x1));
+            result.add(updateSum(x1)+1D);
         });
         return result;
     }
