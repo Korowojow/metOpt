@@ -1,7 +1,6 @@
 package functions;
 
 import com.github.sh0nk.matplotlib4j.PythonExecutionException;
-import common.CommonOperations;
 import plots.DrawPlotForOkresowa;
 
 import java.io.IOException;
@@ -10,9 +9,23 @@ import java.util.List;
 
 public class Okresowa {
 
+    Double result = 0D;
+
     public void implementation(List<Double> x) throws IOException, PythonExecutionException {
         DrawPlotForOkresowa drawPlotForOkresowa = new DrawPlotForOkresowa();
         drawPlotForOkresowa.drawPlots(x, getResultY(x), getResultYInTwoDimensions(x));
+    }
+
+    //Value in a specific point with given number of dimensions can be calculated
+    //number of x must match witch  number of dimensions
+    public Double calculateValueInSpecificPoint(List<Double> x, int dimensions) throws Exception {
+        if(x.size()==dimensions){
+            x.forEach(x1->{
+                result += (updateSumInAnyDimensions(x1, dimensions));
+            });
+            return result + 1;
+        }
+        else throw new Exception("Invalid arguments");
     }
 
     private List<Double> getResultYInTwoDimensions(List<Double> x) {
@@ -36,6 +49,9 @@ public class Okresowa {
     }
     private Double updateSumInTWoDimensions(Double x) {
         return Math.sin(x) * Math.sin(x) - 0.1*(Math.exp(-x*x+x*x));
+    }
+    private Double updateSumInAnyDimensions(Double x, int dimensions) {
+        return Math.sin(x) * Math.sin(x) - 0.1*(Math.exp(-dimensions*(x*x)));
     }
 }
 
