@@ -22,7 +22,7 @@ public class DrawPlotForOkresowa {
 
     private void drawScatterPlot(List<Double> x, List<Double> y) throws IOException, PythonExecutionException {
         Plot plt = Plot.create();
-        plt.plot().add(x, y, "o").label("SyblinskiTang");
+        plt.plot().add(x, y, "o").label("Okresowa");
         plt.legend().loc("upper right");
         plt.title("scatter");
         plt.show();
@@ -38,7 +38,7 @@ public class DrawPlotForOkresowa {
         plt.clabel(contour)
                 .inline(true)
                 .fontsize(10);
-        plt.title("contour");
+        plt.title("contour - Okresowa");
         plt.show();
     }
 
@@ -50,9 +50,9 @@ public class DrawPlotForOkresowa {
 
         Plot3DPanel plot = new Plot3DPanel("SOUTH");
 
-        plot.addGridPlot("myplot", x1, x1, z1);
+        plot.addGridPlot("Okresowa", x1, x1, z1);
 
-        JFrame frame = new JFrame("a plot panel");
+        JFrame frame = new JFrame("Okresowa");
         frame.setSize(600, 600);
         frame.setContentPane(plot);
         frame.setVisible(true);

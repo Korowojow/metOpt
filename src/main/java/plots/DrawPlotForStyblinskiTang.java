@@ -39,7 +39,7 @@ public class DrawPlotForStyblinskiTang {
         plt.clabel(contour)
                 .inline(true)
                 .fontsize(10);
-        plt.title("contour");
+        plt.title("contour - SyblinskiTang");
         plt.show();
     }
 
@@ -51,7 +51,7 @@ public class DrawPlotForStyblinskiTang {
 
         Plot3DPanel plot = new Plot3DPanel("SOUTH");
 
-        plot.addGridPlot("myplot", x1, x1, z1);
+        plot.addGridPlot("SyblinskiTang", x1, x1, z1);
 
         JFrame frame = new JFrame("a plot panel");
         frame.setSize(600, 600);
