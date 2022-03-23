@@ -23,7 +23,7 @@ public class DrawPlotForStyblinskiTang {
 
     private void drawScatterPlot(List<Double> x, List<Double> y) throws IOException, PythonExecutionException {
         Plot plt = Plot.create();
-        plt.plot().add(x, y, "o").label("SyblinskiTang");
+        plt.plot().add(x, y, "o").label("StyblinskiTang");
         plt.legend().loc("upper right");
         plt.title("scatter");
         plt.show();
@@ -38,7 +38,7 @@ public class DrawPlotForStyblinskiTang {
         plt.clabel(contour)
                 .inline(true)
                 .fontsize(10);
-        plt.title("contour - SyblinskiTang");
+        plt.title("contour - StyblinskiTang");
         plt.show();
     }
 
@@ -50,7 +50,7 @@ public class DrawPlotForStyblinskiTang {
 
         Plot3DPanel plot = new Plot3DPanel("SOUTH");
 
-        plot.addGridPlot("SyblinskiTang", x1, x1, z1);
+        plot.addGridPlot("StyblinskiTang", x1, x1, z1);
 
         JFrame frame = new JFrame("a plot panel");
         frame.setSize(600, 600);
