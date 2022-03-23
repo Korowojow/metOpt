@@ -32,7 +32,7 @@ public class DrawPlotForStyblinskiTang {
 
     private void drawContourPlot(List<Double> x, List<Double> y) throws IOException, PythonExecutionException {
         CommonOperations commonOperations = new CommonOperations();
-        List<List<Double>> zCalced = commonOperations.returnMappedZValueInDoubleList(y);
+        List<List<Double>> zCalced = commonOperations.returnMappedZValueInDoubleList(y, 0D);
 
         Plot plt = Plot.create();
         ContourBuilder contour = plt.contour().add(x, x, zCalced);
@@ -46,7 +46,7 @@ public class DrawPlotForStyblinskiTang {
     private void drawSurfacePlot(List<Double> xx, List<Double> yy){
         CommonOperations commonOperations = new CommonOperations();
 
-        double[][] z1 = commonOperations.returnMappedZValueInPrimitiveDoubleTable(yy);
+        double[][] z1 = commonOperations.returnMappedZValueInPrimitiveDoubleTable(yy, 0D);
         double[] x1 = commonOperations.mapListObjectDoubleToArrayPrimitiveDouble(xx);
 
         Plot3DPanel plot = new Plot3DPanel("SOUTH");

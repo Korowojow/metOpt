@@ -9,6 +9,7 @@ import org.math.plot.Plot3DPanel;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class DrawPlotForOkresowa {
@@ -30,7 +31,7 @@ public class DrawPlotForOkresowa {
     private void drawContourPlot(List<Double> x, List<Double> y) throws IOException, PythonExecutionException {
         CommonOperations commonOperations = new CommonOperations();
 
-        List<List<Double>> zCalced = commonOperations.returnMappedZValueInDoubleList(y);
+        List<List<Double>> zCalced = commonOperations.returnMappedZValueInDoubleList(y, 1D);
 
         Plot plt = Plot.create();
         ContourBuilder contour = plt.contour().add(x, x, zCalced);
@@ -44,7 +45,7 @@ public class DrawPlotForOkresowa {
     private void drawSurfacePlot(List<Double> xx, List<Double> yy){
         CommonOperations commonOperations = new CommonOperations();
 
-        double[][] z1 = commonOperations.returnMappedZValueInPrimitiveDoubleTable(yy);
+        double[][] z1 = commonOperations.returnMappedZValueInPrimitiveDoubleTable(yy, 1D);
         double[] x1 = commonOperations.mapListObjectDoubleToArrayPrimitiveDouble(xx);
 
         Plot3DPanel plot = new Plot3DPanel("SOUTH");
@@ -55,8 +56,6 @@ public class DrawPlotForOkresowa {
         frame.setSize(600, 600);
         frame.setContentPane(plot);
         frame.setVisible(true);
-
-
     }
 
 }
