@@ -17,18 +17,30 @@ public class MetOpt {
         Okresowa okresowa = new Okresowa();
 
        // styblinskiTang.implementation(xForStyblinskiTang);
-       // okresowa.implementation(xForOkresowa);
+        okresowa.implementation(xForOkresowa);
 
-        // StyblinskiTang
-        // Zaczynamy z [-5, -5]
-        Double x1 = -5D;
-        Double x2 = -5D;
-        Double poprzedniaWartosc = styblinskiTang.calculateValueInSpecificPoint(List.of(-5D,-5D), 2);
+        //ALGORYTM BEZGRADIENTOWY
+
+//        //STYBLINSKI TANG
+//        Double x1 = -5D;
+//        Double x2 = -5D;
+//        Double poprzedniaWartosc = styblinskiTang.calculateValueInSpecificPoint(List.of(-5D,-5D), 2);
+//        Double minValue
+//                = styblinskiTang.calculateValueInSpecificPoint(List.of(-5D,-5D), 2);
+//        Double krokProbny = 0.3;
+//        Double krokRoboczy = 0.1;
+//        Double tolerancja = 0.001;
+        //OKRESOWA
+        Double x1 = 0D;
+        Double x2 = 0D;
+        Double poprzedniaWartosc = okresowa.calculateValueInSpecificPoint(List.of(-10D,-10D), 2);
         Double minValue
-                = styblinskiTang.calculateValueInSpecificPoint(List.of(-5D,-5D), 2);
-        Double krokProbny = 0.3;
-        Double krokRoboczy = 0.1;
-        Double tolerancja = 0.001;
+                = okresowa.calculateValueInSpecificPoint(List.of(-10D,-10D), 2);
+        Double krokProbny = 0.1;
+        Double krokRoboczy = 0.025;
+        Double tolerancja = 0.0001;
+
+
         List<Double> wektor1 = new ArrayList<>();
         wektor1.add(1D);
         wektor1.add(0D);
@@ -95,9 +107,10 @@ public class MetOpt {
 
     private static Double valueInWektor(Double minValue, List<Double> wektor, Double krokProbny, Double x1, Double x2) throws Exception {
             StyblinskiTang styblinskiTang = new StyblinskiTang();
-             Okresowa okresowa = new Okresowa();
+            Okresowa okresowa = new Okresowa();
 
-        Double wartoscKroku = styblinskiTang.calculateValueInSpecificPoint(List.of(x1 + wektor.get(0) * krokProbny, x2 + wektor.get(1) * krokProbny), 2);
+      //  Double wartoscKroku = styblinskiTang.calculateValueInSpecificPoint(List.of(x1 + wektor.get(0) * krokProbny, x2 + wektor.get(1) * krokProbny), 2);
+        Double wartoscKroku = okresowa.calculateValueInSpecificPoint(List.of(x1 + wektor.get(0) * krokProbny, x2 + wektor.get(1) * krokProbny), 2);
         return wartoscKroku;
     }
 

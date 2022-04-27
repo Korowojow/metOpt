@@ -22,9 +22,9 @@ public class Okresowa {
     public Double calculateValueInSpecificPoint(List<Double> x, int dimensions) throws Exception {
         if(x.size()==dimensions){
             x.forEach(x1->{
-                result += (updateSumInAnyDimensions(x1, x));
+                result += (updateSumInAnyDimensions(x1));
             });
-            return result + 1;
+            return result + 1 + calculateE(x);
         }
         else throw new Exception("Invalid arguments");
     }
@@ -50,11 +50,14 @@ public class Okresowa {
     }
 
     private Double updateSumInTWoDimensions(Double x) {
-        return Math.sin(x) * Math.sin(x) - 0.1*(Math.exp(-x*x+x*x));
+        return (2 * Math.sin(x) * Math.sin(x)) - 0.1*(Math.exp(-(x*x+x*x)));
     }
 
-    private Double updateSumInAnyDimensions(Double x, List<Double> doubles) {
-        return Math.sin(x) * Math.sin(x) - 0.1*(Math.exp(-calculateSumOfXSquare(doubles)));
+    private Double updateSumInAnyDimensions(Double x) {
+        return (Math.sin(x) * Math.sin(x));
+    }
+    private Double calculateE(List<Double> doubles) {
+        return  -0.1*(Math.exp(-calculateSumOfXSquare(doubles)));
     }
 
     private Double calculateSumOfXSquare(List<Double> doubles){
