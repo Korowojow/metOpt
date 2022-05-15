@@ -17,9 +17,67 @@ public class MetOpt {
         StyblinskiTang styblinskiTang = new StyblinskiTang();
         Okresowa okresowa = new Okresowa();
 
-        // styblinskiTang.implementation(xForStyblinskiTang);
-        // okresowa.implementation(xForOkresowa);
+//        styblinskiTang.implementation(xForStyblinskiTang);
+//         okresowa.implementation(xForOkresowa);
         Bezgradientowa bezgradientowa = new Bezgradientowa();
         bezgradientowa.metBezgrad();
+
+        //Punkt startowy
+        Double x1 = -5D;
+        Double x2 = -5D;
+        //Dł kroku
+        Double e = 0.001;
+        // wsp redukcji
+        Double a = 0.5;
+        // dokladnosc wyznaczenia minimum
+        Double epsilon = 0.01;
+        // limit liczby redukcji
+        Double k = 100D;
+        List<Double> actualValues = List.of(x1, x2);
+        int i = 0;
+
+        styblinskiTang.calculateValueInSpecificPoint(List.of(-5D, -5D), 2);
+        okresowa.calculateValueInSpecificPoint(List.of(-5D, -5D),2);
+
+        //-------------------------------------
+        //Start algorytmu
+        //-------------------------------------
+        while(i<10000) {
+            Double gradientX1Value = styblisnkiPochodna(x1);
+            Double gradientX2Value = styblisnkiPochodna(x2);
+            actualValues = calculateNewValue(x1, x2, e, gradientX1Value, gradientX2Value);
+            x1 = actualValues.get(0);
+            x2 = actualValues.get(1);
+            i++;
+        }
+        Double wynikKoncowy = styblinskiTang.calculateValueInSpecificPoint(List.of(x1,x2), 2);
+        System.out.println("METODA GRANDIETOWA OBLICZONO NASTEPUJACE MINIMUM " + wynikKoncowy + " w punkcie (" + x1 + ", " + x2 + ")");
+    }
+
+    private static List<Double> calculateNewValue(Double x1, Double x2, Double e, Double gradientX1Value, Double gradientX2Value) throws Exception {
+        StyblinskiTang styblinskiTang = new StyblinskiTang();
+        while(true) {
+            Double x1new = calculateNewValueOfX(x1, e, gradientX1Value);
+            Double x2new = calculateNewValueOfX(x2, e, gradientX2Value);
+            Double newValue = styblinskiTang.calculateValueInSpecificPoint(List.of(x1new, x2new), 2);
+            Double oldValue = styblinskiTang.calculateValueInSpecificPoint(List.of(x1, x2), 2);
+            if (newValue < oldValue) {
+                return List.of(x1new, x2new);
+            } else {
+                e = e / 2;
+            }
+        }
+    }
+
+    private static Double calculateNewValueOfX(Double previousValue, Double e, Double gradientX2Value) {
+        return previousValue - e * gradientX2Value;
+    }
+
+    private static Double okresowaPochodna(Double x) {
+        return (2/10) * exp(-(x*x)) * x + 2 * sin(x) * cos(x);
+    }
+
+    private static Double styblisnkiPochodna(Double x) {
+        return 2*x*x*x - 16 * x + (5/2);
     }
 }
