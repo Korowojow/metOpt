@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StyblinskiTang {
-    Double result = 0D;
 
     public void implementation(List<Double> x) throws IOException, PythonExecutionException {
         DrawPlotForStyblinskiTang drawPlotForStyblinskiTang = new DrawPlotForStyblinskiTang();
@@ -19,10 +18,7 @@ public class StyblinskiTang {
     //number of x must match witch  number of dimensions
     public Double calculateValueInSpecificPoint(List<Double> x, int dimensions) throws Exception {
         if(x.size()==dimensions){
-        x.forEach(x1->{
-            result += ((updateSum(x1))/2);
-        });
-        return result;
+            return x.stream().mapToDouble(x1 -> ((updateSum(x1)) / 2)).sum();
         }
         else throw new Exception("Invalid arguments");
     }

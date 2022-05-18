@@ -9,9 +9,6 @@ import java.util.List;
 
 public class Okresowa {
 
-    Double result = 0D;
-    Double sum = 0D;
-
     public void implementation(List<Double> x) throws IOException, PythonExecutionException {
         DrawPlotForOkresowa drawPlotForOkresowa = new DrawPlotForOkresowa();
         drawPlotForOkresowa.drawPlots(x, getResultY(x), getResultYInTwoDimensions(x));
@@ -21,9 +18,8 @@ public class Okresowa {
     //number of x must match witch  number of dimensions
     public Double calculateValueInSpecificPoint(List<Double> x, int dimensions) throws Exception {
         if(x.size()==dimensions){
-            x.forEach(x1->{
-                result += (updateSumInAnyDimensions(x1));
-            });
+            double result = x.stream().mapToDouble(this::updateSumInAnyDimensions).sum();
+
             return result + 1 + calculateE(x);
         }
         else throw new Exception("Invalid arguments");
@@ -61,10 +57,7 @@ public class Okresowa {
     }
 
     private Double calculateSumOfXSquare(List<Double> doubles){
-        doubles.forEach(x1 ->{
-            sum += x1*x1;
-        });
-        return sum;
+        return doubles.stream().mapToDouble(x1 -> x1 * x1).sum();
     }
 }
 
