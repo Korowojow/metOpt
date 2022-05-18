@@ -25,8 +25,8 @@ public class MetOpt {
 //                 METODA GRADIENTOWA
 // -------------------------------------------------------
         //Punkt startowy
-        Double x1 = -0.1D;
-        Double x2 = -0.1D;
+        Double x1 = 1.3D;
+        Double x2 = 1.3D;
         //Dł kroku
         Double e = 0.001;
         // wsp redukcji

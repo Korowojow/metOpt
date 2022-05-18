@@ -23,11 +23,11 @@ public class Bezgradientowa {
 //        Double krokRoboczy = 0.1;
 //        Double tolerancja = 0.001;
     //OKRESOWA
-    Double x1 = 0D;
-    Double x2 = 0D;
-    Double poprzedniaWartosc = okresowa.calculateValueInSpecificPoint(List.of(-10D,-10D), 2);
-    Double minValue
-            = okresowa.calculateValueInSpecificPoint(List.of(-10D,-10D), 2);
+    Double x1 = 1.3D;
+    Double x2 = 1.3D;
+        Double poprzedniaWartosc = 1000000D;
+        Double minValue
+            = okresowa.calculateValueInSpecificPoint(List.of(1.3D,1.3D), 2);
     Double krokProbny = 0.1;
     Double krokRoboczy = 0.025;
     Double tolerancja = 0.0001;
